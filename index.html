@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-在hexo中使用图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/" class="article-date">
+  <time datetime="2025-06-29T09:32:01.334Z" itemprop="datePublished">2025-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在hexo中使用图片"><a href="#在hexo中使用图片" class="headerlink" title="在hexo中使用图片"></a>在hexo中使用图片</h1><h2 id="第一步：安装-hexo-asset-image"><a href="#第一步：安装-hexo-asset-image" class="headerlink" title="第一步：安装 hexo-asset-image :"></a>第一步：安装 hexo-asset-image :</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-asset-image</span><br></pre></td></tr></table></figure>
+
+<p>直接安装即可，如没有报错，就直接进行第二步。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-asset-image --save</span><br><span class="line">✔ Installed 1 packages</span><br><span class="line">✔ Linked 17 latest versions</span><br><span class="line">✔ Run 0 scripts</span><br><span class="line">Recently updated (since 2021-03-28): 1 packages (detail see file /home/user/blog/node_modules/.recently_updates.txt)</span><br><span class="line">✔ All packages installed (23 packages installed from npm registry, used 3s(network 3s), speed 123.09kB/s, json 18(42.74kB), tarball 378.36kB)</span><br></pre></td></tr></table></figure>
+
+<p>楼主在执行后无法hexo -d，我明明装了deployer，但是还是报错，因此重新安装hexo-deployer-git：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>提示找不到git</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user@user-W65KJ1-KK1:~/blog$ hexo d</span><br><span class="line">INFO  Validating config</span><br><span class="line">ERROR Deployer not found: git</span><br></pre></td></tr></table></figure>
+
+<p>重新安装 deploy 模块：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">user@user-W65KJ1-KK1:~/blog$ cnpm install --save hexo-deployer-git</span><br><span class="line">⠹ [0/1] Installing domelementtype@^2.0.1platform unsupported hexo-deployer-git@2.1.0 › hexo-fs@2.0.1 › chokidar@3.5.1 › fsevents@~2.3.1 Package require os(darwin) not compatible with your platform(linux)</span><br><span class="line">[fsevents@~2.3.1] optional install error: Package require os(darwin) not compatible with your platform(linux)</span><br><span class="line">✔ Installed 1 packages</span><br><span class="line">✔ Linked 77 latest versions</span><br><span class="line">[1/1] scripts.postinstall hexo-deployer-git@2.1.0 › hexo-util@1.9.1 › highlight.js@^9.13.1 run &quot;node deprecated.js&quot;, root: &quot;/home/user/blog/node_modules/_highlight.js@9.18.5@highlight.js&quot;</span><br><span class="line">-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</span><br><span class="line"></span><br><span class="line">  Verion 9 of Highlight.js has reached EOL.  It will no longer</span><br><span class="line">  be supported or receive security updates in the future.</span><br><span class="line">  Please upgrade to version 10 or encourage your indirect</span><br><span class="line">  dependencies to do so.</span><br><span class="line"></span><br><span class="line">  For more info:</span><br><span class="line">  </span><br><span class="line">  https://github.com/highlightjs/highlight.js/issues/2877</span><br><span class="line">  https://github.com/highlightjs/highlight.js/blob/master/VERSION_10_UPGRADE.md</span><br><span class="line"> </span><br><span class="line">-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</span><br><span class="line">[1/1] scripts.postinstall hexo-deployer-git@2.1.0 › hexo-util@1.9.1 › highlight.js@^9.13.1 finished in 377ms</span><br><span class="line">✔ Run 1 scripts</span><br><span class="line">deprecate hexo-deployer-git@2.1.0 › hexo-util@1.9.1 › highlight.js@^9.13.1 Support has ended for 9.x series. Upgrade to @latest</span><br><span class="line">Recently updated (since 2021-03-28): 3 packages (detail see file /home/user/blog/node_modules/.recently_updates.txt)</span><br><span class="line">✔ All packages installed (80 packages installed from npm registry, used 2s(network 2s), speed 924.7kB/s, json 78(211.08kB), tarball 1.66MB)</span><br></pre></td></tr></table></figure>
+
+<p>估计是因为deploy模块的版本过低，太久没更新了。</p>
+<h2 id="第二步：修改node-modules-hexo-asset-image-index-js中的内容"><a href="#第二步：修改node-modules-hexo-asset-image-index-js中的内容" class="headerlink" title="第二步：修改node_modules/hexo-asset-image/index.js中的内容"></a>第二步：修改node_modules/hexo-asset-image/index.js中的内容</h2><p>全部替换成下列内容（摘自Ericam_ 大神：[<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586]%EF%BC%89">https://blog.csdn.net/xjm850552586]）</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">str, m, i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="built_in">String</span>(hexo.version).split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="keyword">if</span>(config.post_asset_folder)&#123;</span><br><span class="line">        <span class="keyword">var</span> link = data.permalink;</span><br><span class="line">    <span class="keyword">if</span>(version.length &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span></span><br><span class="line">    <span class="keyword">var</span> endPos = link.lastIndexOf(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">&#x27;excerpt&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: <span class="literal">false</span>,</span><br><span class="line">        xmlMode: <span class="literal">false</span>,</span><br><span class="line">        lowerCaseTags: <span class="literal">false</span>,</span><br><span class="line">        decodeEntities: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">&#x27;img&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">            <span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">            <span class="keyword">var</span> src = $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>).replace(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.test(src) &amp;&amp;</span><br><span class="line">               !<span class="regexp">/^\s*\//</span>.test(src)) &#123;</span><br><span class="line">              <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">              <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">              <span class="keyword">var</span> linkArray = link.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">var</span> srcArray = src.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">if</span>(srcArray.length &gt; <span class="number">1</span>)</span><br><span class="line">                srcArray.shift();</span><br><span class="line">              src = srcArray.join(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">              $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>, config.root + link + src);</span><br><span class="line">              <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;update link as:--&gt;&quot;</span>+config.root + link + src);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;no src attr, skipped...&quot;</span>);</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info($(<span class="built_in">this</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>操作到此，配置已经结束了。可以愉快地使用图片了惹～</p>
+<p>下面介绍下使用方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 测试</span><br></pre></td></tr></table></figure>
+
+<p>可以看到_post目录下不仅创建了测试.md，还多出了与该文件同名的目录。</p>
+<p>这个目录是用来存储该篇文章的图片资源的，直接将图片扔里边，在文章中用markdown插入图片的方法写。</p>
+<p>也就是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片的description，可任意填](ai.png)</span><br></pre></td></tr></table></figure>
+
+<p>可还行？</p>
+<p><img src="/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/1.png" alt="1"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/" data-id="cmchir8op0003gstqh1frfh1x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于github的ssh密钥复制移植导入的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2025-06-29T09:03:19.292Z" itemprop="datePublished">2025-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于github的ssh密钥复制移植导入的问题"><a href="#关于github的ssh密钥复制移植导入的问题" class="headerlink" title="关于github的ssh密钥复制移植导入的问题"></a>关于github的ssh密钥复制移植导入的问题</h1><p>问题：</p>
+<p><code>user@user-W65KJ1-KK1:~/blog$ ssh -T git@github.com</code><br><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</code><br><code>@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</code><br><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</code><br><code>Permissions 0664 for &#39;/home/user/.ssh/id_rsa&#39; are too open.</code><br><code>It is required that your private key files are NOT accessible by others.</code><br><code>This private key will be ignored.</code><br><code>Load key &quot;/home/user/.ssh/id_rsa&quot;: bad permissions</code><br><code>git@github.com: Permission denied (publickey).</code></p>
+<p>之前用旧电脑生成了ssh密钥，并将公钥配置到github中。现在换了电脑，因为懒得生成新的密钥再配置一遍，因此我把旧电脑中的密钥文件，也就是 <del>/.ssh/* 拷贝到新电脑的</del>/.ssh文件中，并git init了一个仓库，然后git remote add https://…git 设置了远程仓库，但是我执行命令</p>
+<p><code>ssh -T git@github.com</code></p>
+<p>验证ssh是否通过的时候总是报错，令我百思不得其解。我以为是我的密钥copy有问题，我甚至以为ssh是根机器相关的，不允许copy的。</p>
+<p>其实原因在错误提示中已经说的很明白了：</p>
+<p>Permissions 0664 for ‘/home/user/.ssh/id_rsa’ are too open.</p>
+<p>密钥的权限太过于开放了，因此无法完成ssh认证。</p>
+<p>。。厄</p>
+<p>好吧。我承认自己太年轻了。。。</p>
+<p><code>chmod 600  /home/user/.ssh/id_rsa</code></p>
+<p>将私钥权限修改为只读就好了。修改之后记得将密钥添加到ssh-agent中，首先得保证ssh-agent是运行着的，启动命令：</p>
+<p><code>eval  &quot;$(ssh-agent -s)&quot;</code></p>
+<p>接着直接执行</p>
+<p><code>ssh-add</code></p>
+<p>最后通过命令验证是否能够链接上github，不用修改直接运行该命令：</p>
+<p><code>ssh -T git@github.com</code></p>
+<p><img src="/home/uxdb/.config/Typora/typora-user-images/image-20210404171112792.png" alt="image-20210404171112792"></p>
+<p>大功告成！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="cmchir8ol0000gstq9vkt8kjn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-玩转hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2020-10-03T16:33:24.000Z" itemprop="datePublished">2020-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/">玩转hexo博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="玩转hexo博客"><a href="#玩转hexo博客" class="headerlink" title="玩转hexo博客"></a>玩转hexo博客</h1><hr>
+<h2 id="第一章-搭建hexo博客"><a href="#第一章-搭建hexo博客" class="headerlink" title="第一章 搭建hexo博客"></a>第一章 搭建hexo博客</h2><hr>
+<h3 id="第一节-下载安装hexo"><a href="#第一节-下载安装hexo" class="headerlink" title="第一节 下载安装hexo"></a>第一节 下载安装hexo</h3><ol>
+<li>install node<br> $ sudo apt-get install node.js<br> $ node -v</li>
+<li>install npm<br> $ sudo apt-get install npm<br> $ npm -v</li>
+<li>install cnpm<br> $ sudo npm install -g cnpm<br> $ cnpm -v</li>
+<li>install hexo<br> $ sudo cnpm install -g hexo-cli<br> $ hexo -v</li>
+</ol>
+<hr>
+<h3 id="第二节-hexo基本命令"><a href="#第二节-hexo基本命令" class="headerlink" title="第二节 hexo基本命令"></a>第二节 hexo基本命令</h3><ol>
+<li>hexo的初始化</li>
+</ol>
+<ul>
+<li>新建一个目录<br>mkdir blog</li>
+<li>进入到该目录<br>cd blog</li>
+<li>执行hexo初始化命令<br>hexo init</li>
+</ul>
+<ol start="2">
+<li><p>新建hexo博文<br>hexo new “博文的名字”<br>博文将会创建到目录blog/source/_posts/下</p>
+</li>
+<li><p>编辑博文<br>vim blog/source/_posts/博文的名字.md</p>
+</li>
+<li><p>清理hexo生成的文件<br>hexo clean</p>
+</li>
+<li><p>生成文件<br>hexo generate</p>
+</li>
+<li><p>运行hexo服务器<br>hexo server</p>
+</li>
+<li><p>访问hexo<br>浏览器输入URL:  <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a><br>可以看到默认的hexo主题风格的博客，页面中包含了刚刚写的那篇博文。</p>
+</li>
+<li><p>部署远程hexo</p>
+</li>
+</ol>
+<ul>
+<li><p>打开Github，登陆账号。创建一个新的仓库 YourGithubName.github.io<br>ps：仓库名格式必须是“你的github账户名称.github.io”</p>
+</li>
+<li><p>命令行blog目录下安装git部署插件<br>cnpm install –save hexo-deployer-git </p>
+</li>
+<li><p>部署hexo<br>hexo deploy<br>提示需要输入github的用户名和密码，如果是第一次使用，还可能会给出如下提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">已初始化空的 Git 仓库于 /home/uxdb/blog/.deploy_git/.git/</span><br><span class="line"></span><br><span class="line">*** 请告诉我你是谁。</span><br><span class="line"></span><br><span class="line">运行</span><br><span class="line"></span><br><span class="line">  git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">  git config --global user.name &quot;Your Name&quot;</span><br><span class="line"></span><br><span class="line">来设置您账号的缺省身份标识。</span><br><span class="line">如果仅在本仓库设置身份标识，则省略 --global 参数。</span><br><span class="line"></span><br><span class="line">fatal: 无法自动探测邮件地址（得到 &#x27;uxdb@uxdb-W65KJ1-KK1.(none)&#x27;）</span><br><span class="line">FATAL &#123; err:</span><br><span class="line">   &#123; Error: Spawn failed</span><br><span class="line">       at ChildProcess.task.on.code (/home/uxdb/blog/node_modules/_hexo-util@1.9.1@hexo-util/lib/spawn.js:51:21)</span><br><span class="line">       at ChildProcess.emit (events.js:198:13)</span><br><span class="line">       at Process.ChildProcess._handle.onexit (internal/child_process.js:248:12) code: 128 &#125; &#125; &#x27;Something\&#x27;s wrong. Maybe you can find the solution here: %s&#x27; &#x27;\u001b[4mhttps://hexo.io/docs/troubleshooting.html\u001b[24m&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>按提示设置用户名和邮箱，邮箱可以随意输入。</p>
+</li>
+</ul>
+<ol start="9">
+<li>访问你的hexo<br>打开浏览器，地址栏输入<a target="_blank" rel="noopener" href="https://你的github用户名.github.io/">https://你的github用户名.github.io/</a>，回车，刷新页面，就可以看到和本地hexo一样的页面了。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/" data-id="cmchir8op0004gstq597acco9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-postgreSQL使用（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-03T14:15:37.000Z" itemprop="datePublished">2020-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">postgreSQL使用（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、postgres用户"><a href="#一、postgres用户" class="headerlink" title="一、postgres用户"></a>一、postgres用户</h2><p>postgres用户是pg自带的默认的root用户，要操作pg数据库，必须先切换到该用户。</p>
+<h3 id="切换到postgres用户的方法"><a href="#切换到postgres用户的方法" class="headerlink" title="切换到postgres用户的方法"></a>切换到postgres用户的方法</h3><p>$ sudo -i -u postgres</p>
+<hr>
+<h2 id="二、命令psql的使用"><a href="#二、命令psql的使用" class="headerlink" title="二、命令psql的使用"></a>二、命令psql的使用</h2><p>psql命令可以在命令行模式下直接使用。键入psql，按下回车键，可以登入postgre数据库。</p>
+<p>psql -version                     # 查看已安装的pg版本号</p>
+<p>psql -d [DATABASE]              # -d参数指定连接的数据库</p>
+<p>psql -l                         # 查看所有数据库</p>
+<h2 id="三、pg-SQL的使用"><a href="#三、pg-SQL的使用" class="headerlink" title="三、pg SQL的使用"></a>三、pg SQL的使用</h2><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [DATABASE_NAME];			# 创建数据库</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [DATABASE_NAME];			# 删除数据库</span><br><span class="line"></span><br><span class="line">\d							# 查看当前数据库存在的表</span><br><span class="line"></span><br><span class="line">\d [<span class="built_in">TABLE_NAME</span>]					# 查看指定的表的结构</span><br><span class="line"></span><br><span class="line">\c [DATABASE_NAME]					# 连接到指定的数据库</span><br><span class="line"></span><br><span class="line">\l							# 查看所有的数据库信息</span><br><span class="line"></span><br><span class="line">\x							# 启用Expanded display , 使每一列数据作为一个数据项显示</span><br><span class="line"></span><br><span class="line">\?							# 查看所有\命令的使用方法和介绍</span><br><span class="line"></span><br><span class="line">\i [.<span class="keyword">sql</span>文件的路径]					# 通过.<span class="keyword">sql</span>文件批量执行<span class="keyword">sql</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE [TABLE_NAME] ([COLUMN1 TYPE CONSTRAINT, COLUMN2 TYPE CONSTRAINT, ...]);  		# 创建表</span><br><span class="line">例如:</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> students (<span class="type">name</span> <span class="type">text</span>, age <span class="type">smallint</span>, class_num <span class="type">bigint</span>, gender <span class="type">char</span>(<span class="number">1</span>), student_id <span class="type">serial</span>);</span><br><span class="line"></span><br><span class="line">INSERT INTO [TABLE_NAME](COLUMN1,COLUMN2,...) VALUES (&#x27;COLUMN1_DATE&#x27;,&#x27;COLUMN2_DATE&#x27;,...);		# 插入数据</span><br><span class="line">例如:</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> students(<span class="type">name</span>,age,class_num,gender,student_id) <span class="keyword">VALUES</span> (<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;23&#x27;</span>,<span class="string">&#x27;1601051&#x27;</span>,<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students;										# 查询表students中所有的数据 </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cmchir8on0001gstq66wthh8v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unbuntu20安装星际译王" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/" class="article-date">
+  <time datetime="2020-10-03T14:05:33.000Z" itemprop="datePublished">2020-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/">unbuntu20安装星际译王</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装星际译王"><a href="#安装星际译王" class="headerlink" title="安装星际译王"></a>安装星际译王</h1><p>sudo apt-get install stardict</p>
+<h1 id="辞典存放路径"><a href="#辞典存放路径" class="headerlink" title="辞典存放路径"></a>辞典存放路径</h1><p>/usr/share/stardict/dic</p>
+<h1 id="辞典下载"><a href="#辞典下载" class="headerlink" title="辞典下载"></a>辞典下载</h1><p><a target="_blank" rel="noopener" href="https://www.cr173.com/soft/13254.html">https://www.cr173.com/soft/13254.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/" data-id="cmchir8op0002gstq0j111s9o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/">玩转hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">postgreSQL使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/">unbuntu20安装星际译王</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

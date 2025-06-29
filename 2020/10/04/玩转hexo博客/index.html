@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>玩转hexo博客 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="玩转hexo博客 第一章 搭建hexo博客 第一节 下载安装hexo install node $ sudo apt-get install node.js $ node -v install npm $ sudo apt-get install npm $ npm -v install cnpm $ sudo npm install -g cnpm $ cnpm -v install hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转hexo博客">
+<meta property="og:url" content="http://example.com/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="玩转hexo博客 第一章 搭建hexo博客 第一节 下载安装hexo install node $ sudo apt-get install node.js $ node -v install npm $ sudo apt-get install npm $ npm -v install cnpm $ sudo npm install -g cnpm $ cnpm -v install hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-03T16:33:24.000Z">
+<meta property="article:modified_time" content="2025-06-29T09:03:19.292Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-玩转hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2020-10-03T16:33:24.000Z" itemprop="datePublished">2020-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      玩转hexo博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="玩转hexo博客"><a href="#玩转hexo博客" class="headerlink" title="玩转hexo博客"></a>玩转hexo博客</h1><hr>
+<h2 id="第一章-搭建hexo博客"><a href="#第一章-搭建hexo博客" class="headerlink" title="第一章 搭建hexo博客"></a>第一章 搭建hexo博客</h2><hr>
+<h3 id="第一节-下载安装hexo"><a href="#第一节-下载安装hexo" class="headerlink" title="第一节 下载安装hexo"></a>第一节 下载安装hexo</h3><ol>
+<li>install node<br> $ sudo apt-get install node.js<br> $ node -v</li>
+<li>install npm<br> $ sudo apt-get install npm<br> $ npm -v</li>
+<li>install cnpm<br> $ sudo npm install -g cnpm<br> $ cnpm -v</li>
+<li>install hexo<br> $ sudo cnpm install -g hexo-cli<br> $ hexo -v</li>
+</ol>
+<hr>
+<h3 id="第二节-hexo基本命令"><a href="#第二节-hexo基本命令" class="headerlink" title="第二节 hexo基本命令"></a>第二节 hexo基本命令</h3><ol>
+<li>hexo的初始化</li>
+</ol>
+<ul>
+<li>新建一个目录<br>mkdir blog</li>
+<li>进入到该目录<br>cd blog</li>
+<li>执行hexo初始化命令<br>hexo init</li>
+</ul>
+<ol start="2">
+<li><p>新建hexo博文<br>hexo new “博文的名字”<br>博文将会创建到目录blog/source/_posts/下</p>
+</li>
+<li><p>编辑博文<br>vim blog/source/_posts/博文的名字.md</p>
+</li>
+<li><p>清理hexo生成的文件<br>hexo clean</p>
+</li>
+<li><p>生成文件<br>hexo generate</p>
+</li>
+<li><p>运行hexo服务器<br>hexo server</p>
+</li>
+<li><p>访问hexo<br>浏览器输入URL:  <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a><br>可以看到默认的hexo主题风格的博客，页面中包含了刚刚写的那篇博文。</p>
+</li>
+<li><p>部署远程hexo</p>
+</li>
+</ol>
+<ul>
+<li><p>打开Github，登陆账号。创建一个新的仓库 YourGithubName.github.io<br>ps：仓库名格式必须是“你的github账户名称.github.io”</p>
+</li>
+<li><p>命令行blog目录下安装git部署插件<br>cnpm install –save hexo-deployer-git </p>
+</li>
+<li><p>部署hexo<br>hexo deploy<br>提示需要输入github的用户名和密码，如果是第一次使用，还可能会给出如下提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">已初始化空的 Git 仓库于 /home/uxdb/blog/.deploy_git/.git/</span><br><span class="line"></span><br><span class="line">*** 请告诉我你是谁。</span><br><span class="line"></span><br><span class="line">运行</span><br><span class="line"></span><br><span class="line">  git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">  git config --global user.name &quot;Your Name&quot;</span><br><span class="line"></span><br><span class="line">来设置您账号的缺省身份标识。</span><br><span class="line">如果仅在本仓库设置身份标识，则省略 --global 参数。</span><br><span class="line"></span><br><span class="line">fatal: 无法自动探测邮件地址（得到 &#x27;uxdb@uxdb-W65KJ1-KK1.(none)&#x27;）</span><br><span class="line">FATAL &#123; err:</span><br><span class="line">   &#123; Error: Spawn failed</span><br><span class="line">       at ChildProcess.task.on.code (/home/uxdb/blog/node_modules/_hexo-util@1.9.1@hexo-util/lib/spawn.js:51:21)</span><br><span class="line">       at ChildProcess.emit (events.js:198:13)</span><br><span class="line">       at Process.ChildProcess._handle.onexit (internal/child_process.js:248:12) code: 128 &#125; &#125; &#x27;Something\&#x27;s wrong. Maybe you can find the solution here: %s&#x27; &#x27;\u001b[4mhttps://hexo.io/docs/troubleshooting.html\u001b[24m&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>按提示设置用户名和邮箱，邮箱可以随意输入。</p>
+</li>
+</ul>
+<ol start="9">
+<li>访问你的hexo<br>打开浏览器，地址栏输入<a target="_blank" rel="noopener" href="https://你的github用户名.github.io/">https://你的github用户名.github.io/</a>，回车，刷新页面，就可以看到和本地hexo一样的页面了。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/" data-id="cmchir8op0004gstq597acco9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">postgreSQL使用（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/">玩转hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">postgreSQL使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/">unbuntu20安装星际译王</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

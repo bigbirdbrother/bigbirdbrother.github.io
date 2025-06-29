@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>postgreSQL使用（一） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、postgres用户postgres用户是pg自带的默认的root用户，要操作pg数据库，必须先切换到该用户。 切换到postgres用户的方法$ sudo -i -u postgres  二、命令psql的使用psql命令可以在命令行模式下直接使用。键入psql，按下回车键，可以登入postgre数据库。 psql -version                     # 查看已安装的p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postgreSQL使用（一）">
+<meta property="og:url" content="http://example.com/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、postgres用户postgres用户是pg自带的默认的root用户，要操作pg数据库，必须先切换到该用户。 切换到postgres用户的方法$ sudo -i -u postgres  二、命令psql的使用psql命令可以在命令行模式下直接使用。键入psql，按下回车键，可以登入postgre数据库。 psql -version                     # 查看已安装的p">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-03T14:15:37.000Z">
+<meta property="article:modified_time" content="2025-06-29T09:03:19.292Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-postgreSQL使用（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2020-10-03T14:15:37.000Z" itemprop="datePublished">2020-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      postgreSQL使用（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、postgres用户"><a href="#一、postgres用户" class="headerlink" title="一、postgres用户"></a>一、postgres用户</h2><p>postgres用户是pg自带的默认的root用户，要操作pg数据库，必须先切换到该用户。</p>
+<h3 id="切换到postgres用户的方法"><a href="#切换到postgres用户的方法" class="headerlink" title="切换到postgres用户的方法"></a>切换到postgres用户的方法</h3><p>$ sudo -i -u postgres</p>
+<hr>
+<h2 id="二、命令psql的使用"><a href="#二、命令psql的使用" class="headerlink" title="二、命令psql的使用"></a>二、命令psql的使用</h2><p>psql命令可以在命令行模式下直接使用。键入psql，按下回车键，可以登入postgre数据库。</p>
+<p>psql -version                     # 查看已安装的pg版本号</p>
+<p>psql -d [DATABASE]              # -d参数指定连接的数据库</p>
+<p>psql -l                         # 查看所有数据库</p>
+<h2 id="三、pg-SQL的使用"><a href="#三、pg-SQL的使用" class="headerlink" title="三、pg SQL的使用"></a>三、pg SQL的使用</h2><figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [DATABASE_NAME];			# 创建数据库</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [DATABASE_NAME];			# 删除数据库</span><br><span class="line"></span><br><span class="line">\d							# 查看当前数据库存在的表</span><br><span class="line"></span><br><span class="line">\d [<span class="built_in">TABLE_NAME</span>]					# 查看指定的表的结构</span><br><span class="line"></span><br><span class="line">\c [DATABASE_NAME]					# 连接到指定的数据库</span><br><span class="line"></span><br><span class="line">\l							# 查看所有的数据库信息</span><br><span class="line"></span><br><span class="line">\x							# 启用Expanded display , 使每一列数据作为一个数据项显示</span><br><span class="line"></span><br><span class="line">\?							# 查看所有\命令的使用方法和介绍</span><br><span class="line"></span><br><span class="line">\i [.<span class="keyword">sql</span>文件的路径]					# 通过.<span class="keyword">sql</span>文件批量执行<span class="keyword">sql</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE [TABLE_NAME] ([COLUMN1 TYPE CONSTRAINT, COLUMN2 TYPE CONSTRAINT, ...]);  		# 创建表</span><br><span class="line">例如:</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> students (<span class="type">name</span> <span class="type">text</span>, age <span class="type">smallint</span>, class_num <span class="type">bigint</span>, gender <span class="type">char</span>(<span class="number">1</span>), student_id <span class="type">serial</span>);</span><br><span class="line"></span><br><span class="line">INSERT INTO [TABLE_NAME](COLUMN1,COLUMN2,...) VALUES (&#x27;COLUMN1_DATE&#x27;,&#x27;COLUMN2_DATE&#x27;,...);		# 插入数据</span><br><span class="line">例如:</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> students(<span class="type">name</span>,age,class_num,gender,student_id) <span class="keyword">VALUES</span> (<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;23&#x27;</span>,<span class="string">&#x27;1601051&#x27;</span>,<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> students;										# 查询表students中所有的数据 </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cmchir8on0001gstq66wthh8v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          玩转hexo博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">unbuntu20安装星际译王</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/29/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/29/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/">玩转hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">postgreSQL使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/">unbuntu20安装星际译王</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
