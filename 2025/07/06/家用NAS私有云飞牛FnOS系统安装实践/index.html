@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>家用NAS私有云飞牛FnOS系统安装教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="飞牛官网地址：https:&#x2F;&#x2F;www.fnos.com.cn&#x2F;飞牛官方教程: https:&#x2F;&#x2F;help.fnnas.com&#x2F;articles&#x2F;fnosV1&#x2F;start&#x2F;install-os.md 最近飞牛FnOS非常火，所以想自己动手装一个NAS系统, 记录一下方便准备入坑的小伙伴们参考。 准备工作1. 硬件配置   硬件名称 详情    处理器 Intel Atom X5 - Z8350 四核处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家用NAS私有云飞牛FnOS系统安装教程">
+<meta property="og:url" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="飞牛官网地址：https:&#x2F;&#x2F;www.fnos.com.cn&#x2F;飞牛官方教程: https:&#x2F;&#x2F;help.fnnas.com&#x2F;articles&#x2F;fnosV1&#x2F;start&#x2F;install-os.md 最近飞牛FnOS非常火，所以想自己动手装一个NAS系统, 记录一下方便准备入坑的小伙伴们参考。 准备工作1. 硬件配置   硬件名称 详情    处理器 Intel Atom X5 - Z8350 四核处">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_125759.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/fnos_web.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/rufus.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/rufus_exe.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/iso_write.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/uefi.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134100.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134138.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134212.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134316.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134333.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_135735.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_135848.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_140333.jpg">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/%E9%A3%9E%E7%89%9B.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/fnfn.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/webcome.png">
+<meta property="og:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/FnController.png">
+<meta property="article:published_time" content="2025-07-06T04:40:54.000Z">
+<meta property="article:modified_time" content="2025-07-06T06:29:07.348Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="飞牛FnOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_125759.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-家用NAS私有云飞牛FnOS系统安装实践" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/" class="article-date">
+  <time datetime="2025-07-06T04:40:54.000Z" itemprop="datePublished">2025-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      家用NAS私有云飞牛FnOS系统安装教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>飞牛官网地址：<a target="_blank" rel="noopener" href="https://www.fnos.com.cn/">https://www.fnos.com.cn/</a><br>飞牛官方教程: <a target="_blank" rel="noopener" href="https://help.fnnas.com/articles/fnosV1/start/install-os.md">https://help.fnnas.com/articles/fnosV1/start/install-os.md</a></p>
+<p>最近飞牛FnOS非常火，所以想自己动手装一个NAS系统, 记录一下方便准备入坑的小伙伴们参考。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="1-硬件配置"><a href="#1-硬件配置" class="headerlink" title="1. 硬件配置"></a>1. 硬件配置</h3><table>
+<thead>
+<tr>
+<th>硬件名称</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>处理器</td>
+<td>Intel Atom X5 - Z8350 四核处理器，主频 1.44GHz，TDP 仅 2W</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>2GB DDR3（焊接，不可扩展）</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>8GB/16GB eMMC（部分用户可自行升级至 32GB）</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>集成显卡，支持双 DisplayPort 输出（最高 2560×1600 @60Hz）36。</td>
+</tr>
+<tr>
+<td>网络</td>
+<td>1× 千兆以太网（RJ45）3。可选配 802.11a/b/g/n/ac Wi-Fi 和蓝牙（部分型号需额外模块）</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>4 个 USB 端口（1× USB 3.0 + 3× USB 2.0）</td>
+</tr>
+<tr>
+<td>显示</td>
+<td>2× DisplayPort 接口（需注意未接显示器时可能降频，建议使用 DP 诱骗器）</td>
+</tr>
+<tr>
+<td>音频</td>
+<td>1× 复合音频插孔（耳机/麦克风二合一）</td>
+</tr>
+<tr>
+<td>扩展槽</td>
+<td>1× miniPCIe（SDIO 协议，非标准 PCIe，主要用于 Wi-Fi 模块）</td>
+</tr>
+</tbody></table>
+<p><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_125759.jpg" alt="Wyse 3040"></p>
+<ol>
+<li><p>准备一个16g以上用于装机的U盘, U盘将被格式化，确保里边无重要数据。</p>
+</li>
+<li><p>打开飞牛官网, 下载最新版FnOS镜像文件iso<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/fnos_web.png" alt="fnos_web"></p>
+</li>
+<li><p>访问并下载rufus：<a target="_blank" rel="noopener" href="https://rufus.ie/zh/">https://rufus.ie/zh/</a><br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/rufus.png" alt="rufus官网"></p>
+</li>
+<li><p>插上u盘打开rufus.exe, 选择刚刚下载的iso, 点开始将镜像写入u盘, 就跟官网教程写的那样<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/rufus_exe.png" alt="rufus_exe"></p>
+</li>
+<li><p>点击开始后, 弹窗提示, 点确定就好, 以iso格式写入<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/iso_write.png" alt="iso_write"><br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/uefi.png" alt="uefi"></p>
+</li>
+<li><p>写入完成后关闭rufus, 弹出U盘, 插到要装系统的电脑上, 这里我插到戴尔Wyse3040的usb接口上, 接上键盘和显示器</p>
+</li>
+</ol>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><ol>
+<li><p>插电! 开机! (电流轻松跑上去 [#bushi]) 开机后狂按f12键<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134100.jpg" alt="alt text"></p>
+</li>
+<li><p>选择UEFI: [u盘品牌, 这里是金士顿的u盘] 从u盘引导<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134138.jpg" alt="alt text"></p>
+</li>
+<li><p>这里选择Graphical Install , 图形化安装</p>
+</li>
+<li><p>进去一路点击下一步, 确定, 到硬盘这个页面<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134212.jpg" alt="硬盘"></p>
+</li>
+<li><p>这里可以看到我的硬盘是16g的, 实际大小14.68 GB, 下一步<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134316.jpg" alt="设置硬盘分区"></p>
+</li>
+<li><p>设置硬盘分区, 我这里只有14GB多一些, 所以就保守选择11GB系统分区了, 实际测试32GB以上是比较好的选择, 有条件的可以多给点空间, 64GB甚至128GB都可以, 因为即使给16GB也会导致空间不足而无法更新, 我这里只是为了演示就随便填了。<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_134333.jpg" alt="安装"><br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_135735.jpg" alt="完成"></p>
+</li>
+<li><p>经过漫长的17分钟的等待时间，进度条终于撑不住了！我都坚持不了这么久。<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_135848.jpg" alt="设置ip"></p>
+</li>
+<li><p>设置一下静态IP，这里必须要跟拨号设备同一个网段，比如家里的设备都是192.168.1.*的， 那你就设置192.168.1.【随便填一个没有被占用的数字，范围2-254】</p>
+</li>
+<li><p>然后保存，重启电脑，黑屏后迅速拔出u盘不要犹豫，然后等待进系统。<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/IMG_20250706_140333.jpg" alt="alt text"></p>
+</li>
+<li><p>屏幕上会显示飞牛的地址：<a href="http://ip：端口">http://ip：端口</a><br>回到电脑浏览器中登录飞牛的地址，我这里是<a target="_blank" rel="noopener" href="http://192.168.1.88:5666/">http://192.168.1.88:5666</a><br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/%E9%A3%9E%E7%89%9B.png" alt="alt text"></p>
+</li>
+</ol>
+<h3 id="设置系统"><a href="#设置系统" class="headerlink" title="设置系统"></a>设置系统</h3><p>进入欢迎界面<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/fnfn.png" alt="alt text"><br>设置一下系统名称, 管理员用户名密码什么的<br><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/webcome.png" alt="alt text"><br>NAS就叫DSM吧, DSM是公认的好用的系统, FnOS同样优秀!</p>
+<p><img src="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/FnController.png" alt="alt text"><br>完结撒花~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/" data-id="cmcral4gd0000x4tq4n9q2124" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A3%9E%E7%89%9BFnOS/" rel="tag">飞牛FnOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">飞牛FnOS中的远程访问nas服务的方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A3%9E%E7%89%9BFnOS/" rel="tag">飞牛FnOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E9%A3%9E%E7%89%9BFnOS/" style="font-size: 10px;">飞牛FnOS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/06/%E5%AE%B6%E7%94%A8NAS%E7%A7%81%E6%9C%89%E4%BA%91%E9%A3%9E%E7%89%9BFnOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%AE%9E%E8%B7%B5/">家用NAS私有云飞牛FnOS系统安装教程</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/">飞牛FnOS中的远程访问nas服务的方案</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/">在hexo中使用图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/04/%E5%85%B3%E4%BA%8Egithub%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E7%A7%BB%E6%A4%8D%E5%AF%BC%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/">关于github的ssh密钥复制移植导入的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/04/%E7%8E%A9%E8%BD%AChexo%E5%8D%9A%E5%AE%A2/">玩转hexo博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
