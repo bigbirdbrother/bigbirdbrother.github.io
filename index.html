@@ -64,6 +64,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-飞牛FnOS中的远程访问nas中的服务的方案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2025-06-30T12:53:25.000Z" itemprop="datePublished">2025-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/">飞牛FnOS中的远程访问nas服务的方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是远程访问"><a href="#什么是远程访问" class="headerlink" title="什么是远程访问?"></a>什么是远程访问?</h2><p>远程访问是指在本地计算机上通过网络访问远程计算机上的资源或服务。这里在NAS中主要是用户外出时，通过网络访问NAS中的服务，比如访问NAS中的文件，访问NAS中的飞牛影视、相册，观看影片、照片等等。内网指的是在同一个局域网内的访问，外网指的是在不同局域网内的访问。所谓局域网，可以简单理解为路由器生成的192.168.*.*的ip网段, 家中的设备一般就是这个网段的。而如果连接了同一个WIFI，或者通过网线连接到同一个路由器，那么这些设备就是在同一个局域网内。而外网，就是指在不同局域网内的访问，比如在公司内网访问家中的NAS，或者在外出时在奶茶店咖啡厅宾馆等场所的WIFI或者网线连接的情况下访问家中的NAS。<br>外网与内网的区别总结如图<br><img src="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/test2.png" alt="外网和内网的区别"></p>
+<p>值得注意的是外网无法直接访问内网ip地址，因此需要通过一些手段来实现外网访问内网的设备和资源。常见的方法有：</p>
+<ol>
+<li>使用公网IP</li>
+<li>使用IPv6</li>
+<li>使用内网穿透</li>
+</ol>
+<h3 id="公网IP实现远程访问"><a href="#公网IP实现远程访问" class="headerlink" title="公网IP实现远程访问"></a>公网IP实现远程访问</h3><p>公网IP是指在互联网上具有唯一地址的IP地址。一般比较难获取到，只能跟运营商申请，而不同地区的运营商能提供的公网ip的能力各不相同，并且普遍不愿意给普通用户提供公网ip，因此这种方法不太可行。</p>
+<h3 id="IPv6实现远程访问"><a href="#IPv6实现远程访问" class="headerlink" title="IPv6实现远程访问"></a>IPv6实现远程访问</h3><p>IPv6大大扩展了IP地址的数量，地球上几乎每一台设备都可以获得一个唯一的IPv6地址。因此，可以简单认为IPv6全部都是公网IP地址， 目前三大运营商已经全面支持并默认开通了IPv6，因此IPv6是一个简单和低成本的远程方案。</p>
+<ul>
+<li>优点：完全免费，配置简单易上手，对新手友好</li>
+<li>缺点：对客户端有要求，客户端必须支持IPv6，并且能够访问到IPv6网络。比如，手机5G流量支持IPv6，使用5G移动数据连接就可以远程访问NAS，而如果奶茶店的WIFI不支持IPv6则无法访问。其次是运营商有可能会以PCDN为由封禁用户的IPv6，也就是直接不下发IPv6，NAS上直接检测不到IPv6地址，也就无法使用IPv6远程访问了。</li>
+</ul>
+<h3 id="内网穿透实现远程访问"><a href="#内网穿透实现远程访问" class="headerlink" title="内网穿透实现远程访问"></a>内网穿透实现远程访问</h3><p>内网穿透一般是指通过拥有公网IP的服务器做中转，实现内网设备的远程访问。内网穿透的原理是：<br>用户的手机-&gt;访问-&gt;公网服务器-&gt;访问-&gt;用户的NAS-&gt;NAS上的服务(端口号)<br>相当于把 用户NAS上的服务的端口号暴露\映射到公网服务器上，用户可以通过访问公网服务器的指定的端口号来访问NAS上的服务。</p>
+<ul>
+<li>优点：对客户端友好, 只要能连接上网络就能访问。</li>
+<li>缺点：自建内网穿透如Frp需要公网服务器（即VPS）做中转，需要一定的费用。VPS一般由云服务商提供，按月或者年收费，购买和配置部署需要学习和维护成本。而免费的内网穿透服务如Tailscale、ZeroTier等，穿透的带宽和速度都不理想，且不稳定。只能用于带宽友好的场景：比如访问NAS管理界面、访问NAS上的小文件、图片、音乐服务等，对于jellyfin、飞牛影视等服务需要大带宽的场景，不适合。基本上只能够360P最多480P的清晰度转码播放视频，画面比较糊，体验感稍差。</li>
+</ul>
+<p>简而言之，公网的IPv4申请不到，IPv6是个不错的选择，如果IPv6被封禁或者客户端没有IPv6，又希望能远程访问，那么可以考虑内网穿透。内网穿透中，Tailscale免费，易上手但是带宽小，Frp需要租赁公网服务器（VPS），折腾但是好用。</p>
+<h3 id="如何获取和使用IPV6实现飞牛FnOS-NAS的远程访问"><a href="#如何获取和使用IPV6实现飞牛FnOS-NAS的远程访问" class="headerlink" title="如何获取和使用IPV6实现飞牛FnOS NAS的远程访问"></a>如何获取和使用IPV6实现飞牛FnOS NAS的远程访问</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/" data-id="cmcr4pgfq00004gtqg3b98u63" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A3%9E%E7%89%9BFnOS/" rel="tag">飞牛FnOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-在hexo中使用图片" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/28/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/" class="article-date">
@@ -359,15 +416,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A3%9E%E7%89%9BFnOS/" rel="tag">飞牛FnOS</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E9%A3%9E%E7%89%9BFnOS/" style="font-size: 10px;">飞牛FnOS</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
     </div>
   </div>
 
@@ -378,6 +449,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/06/30/%E9%A3%9E%E7%89%9BFnOS%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEnas%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%A1%88/">飞牛FnOS中的远程访问nas服务的方案</a>
+          </li>
         
           <li>
             <a href="/2021/03/28/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87/">在hexo中使用图片</a>
@@ -393,10 +468,6 @@
         
           <li>
             <a href="/2020/10/03/postgreSQL%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/">postgreSQL使用（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/03/unbuntu20%E5%AE%89%E8%A3%85%E6%98%9F%E9%99%85%E8%AF%91%E7%8E%8B/">unbuntu20安装星际译王</a>
           </li>
         
       </ul>
